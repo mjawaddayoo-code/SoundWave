@@ -1,7 +1,8 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {Routes,Route,NavLink,useNavigate,useLocation,useParams} from 'react-router-dom';
 import {Home,Search,Library,Plus,Heart,Play,Pause,SkipBack,SkipForward,Shuffle,Repeat,Volume2,VolumeX,MoreHorizontal,Clock3,Music2,ChevronLeft,ChevronRight,Menu,X,LogIn,LogOut,UserRound,Settings,LayoutDashboard,Upload,Users,Disc3,TrendingUp,Headphones,Check,LockKeyhole} from 'lucide-react';
-const API=(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace(/\/$/,'');
+const rawApi=(import.meta.env.VITE_API_URL||'http://localhost:5000/api').replace(/\/$/,'');
+const API=rawApi.endsWith('/api')?rawApi:rawApi+'/api';
 const fmt=(s=0)=>`${Math.floor((s||0)/60)}:${String(Math.floor((s||0)%60)).padStart(2,'0')}`;
 const idOf=x=>typeof x==='string'?x:x?._id;
 const greeting=()=>{const h=new Date().getHours();return h<12?'Good morning':h<18?'Good afternoon':'Good evening'};
